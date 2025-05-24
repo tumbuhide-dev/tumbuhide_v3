@@ -816,6 +816,60 @@ ORDER BY column_name;
 
 
 -- =============================================
+-- PRODUCTION FIX - ADD ALL MISSING COLUMNS
+-- =============================================
+
+-- Add all missing columns to profiles table
+ALTER TABLE profiles 
+ADD COLUMN IF NOT EXISTS plan_selected BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS profile_completed BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS niche VARCHAR(100),
+ADD COLUMN IF NOT EXISTS bio TEXT,
+ADD COLUMN IF NOT EXISTS tagline VARCHAR(200),
+ADD COLUMN IF NOT EXISTS pronouns VARCHAR(50),
+ADD COLUMN IF NOT EXISTS age INTEGER,
+ADD COLUMN IF NOT EXISTS website_url TEXT,
+ADD COLUMN IF NOT EXISTS email_public VARCHAR(255),
+ADD COLUMN IF NOT EXISTS phone_public VARCHAR(50),
+ADD COLUMN IF NOT EXISTS show_email BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS show_phone BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS show_location BOOLEAN DEFAULT TRUE,
+ADD COLUMN IF NOT EXISTS show_age BOOLEAN DEFAULT TRUE,
+ADD COLUMN IF NOT EXISTS theme_color VARCHAR(7) DEFAULT '#8B5CF6',
+ADD COLUMN IF NOT EXISTS custom_css TEXT,
+ADD COLUMN IF NOT EXISTS seo_title VARCHAR(100),
+ADD COLUMN IF NOT EXISTS seo_description VARCHAR(200),
+ADD COLUMN IF NOT EXISTS seo_keywords VARCHAR(500),
+ADD COLUMN IF NOT EXISTS monthly_views INTEGER DEFAULT 0,
+ADD COLUMN IF NOT EXISTS monthly_clicks INTEGER DEFAULT 0,
+ADD COLUMN IF NOT EXISTS last_active TIMESTAMP WITH TIME ZONE DEFAULT NOW();
+
+-- Update existing records
+UPDATE profiles 
+SET 
+  plan_selected = COALESCE(plan_selected, FALSE),
+  profile_completed = COALESCE(profile_completed, FALSE),
+  show_email = COALESCE(show_email, FALSE),
+  show_phone = COALESCE(show_phone, FALSE),
+  show_location = COALESCE(show_location, TRUE),
+  show_age = COALESCE(show_age, TRUE),
+  theme_color = COALESCE(theme_color, '#8B5CF6'),
+  monthly_views = COALESCE(monthly_views, 0),
+  monthly_clicks = COALESCE(monthly_clicks, 0),
+  last_active = COALESCE(last_active, NOW())
+WHERE id IS NOT NULL;
+
+-- Refresh schema cache
+NOTIFY pgrst, 'reload schema';
+
+-- Verify all columns exist
+SELECT column_name, data_type, is_nullable, column_default
+FROM information_schema.columns 
+WHERE table_name = 'profiles' 
+ORDER BY column_name;
+
+
+-- =============================================
 -- COMPLETION MESSAGE
 -- =============================================
 
