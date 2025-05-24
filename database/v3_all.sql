@@ -793,6 +793,28 @@ GRANT SELECT ON invitation_codes TO anon;
 GRANT SELECT ON themes TO anon;
 GRANT SELECT ON brand_campaigns TO anon;
 
+-- Add missing columns to profiles table
+ALTER TABLE profiles 
+ADD COLUMN IF NOT EXISTS plan_selected BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS profile_completed BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS niche VARCHAR(100),
+ADD COLUMN IF NOT EXISTS bio TEXT;
+
+-- Update existing records to have default values
+UPDATE profiles 
+SET 
+  plan_selected = FALSE,
+  profile_completed = FALSE
+WHERE plan_selected IS NULL OR profile_completed IS NULL;
+
+-- Verify columns exist
+SELECT column_name, data_type, is_nullable, column_default
+FROM information_schema.columns 
+WHERE table_name = 'profiles' 
+AND column_name IN ('plan_selected', 'profile_completed', 'niche', 'bio')
+ORDER BY column_name;
+
+
 -- =============================================
 -- COMPLETION MESSAGE
 -- =============================================
