@@ -1,0 +1,92 @@
+register page
+kenapa ada pilihan jenis akun? saya rasa hidden aja dan sementara otomatis insert content creator, karena saya blm buat dashboard untuk brand/admin
+
+jadi lebih baik
+
+email
+pass
+confirm pass
+*tambahkan icon show password
+
+dibikin simpel aja , untuk melengkapi profile kan nantinya diarahkan ke complete page kan?
+
+login
+oke - update agar tampilannya sama dengan yg lain [hidup]
+
+register login pastikan ttp ada header footer ya!!
+
+
+complete-profile
+
+username - Username is not available [ayo perbaiki logikanya, case ketika ketik 2 digit aman tapi gabisa klik confirm ] harusnya kan minimal 3 digit [ atau ada saran?] , not avail ketik username tersebut sudah ada yg menggunakan/dilarang kata2 root contoh admin dll [paham?] dan maksimal berapa digit? 
+
+Full name? oke gpp disini saja nama lengkapnya, jadi di register gaperlu ada kolom input nama lengkap, fix disini saja]
+
+tagline? gawajib disini kan harusnya? bisa diditur edit saja?
+
+location, saya rasa buatkan pilihan saja dengan kolom cari kota
+
+jadi lokasi diklik muncul pilihan dan dibagian atas sendiri user bisa ketik/cari nama kota, kita saja yg handle agar tidak ada kesalahan/ beda2 lokasi karena user. intinya kota saja kita yg handle, user yg pilih
+
+tanggal lahir oke tp handle default umur 17 maksud saya, pilihannya mulai dr tahun umur 17 , jadi bukan 2025, paham kan maksudnya? kalau tahun 17 skrng dr 2025 maka tahun terakhir 2008
+
+pronouns? tolong kasih pilihan laki-laki / perempuan tapi ini kurang asik ya bisa pakai yg lebih santai dan deket gt lo, tp kita kasih pilihan default pria/wanita
+
+nah setelah klik complete profile direct ke page plan selecetion
+
+pilih tier basic / pro [dengan memasukan kode undangan]
+
+direct ke dashboard
+
+untuk sementara ini saya stuck di complete profile karena ada kesalahan handle logika
+
+
+btw belum menambahkan fitur logout kah?
+
+tolong tambahkan fitur logout / keluar juga [case di complete tidak ada logout, jadi bingung harus kmn/klik mana]
+
+
+
+pastikan semua page full bahasa indonesia ya untuk keperluan seo dan wajib diindexoleh google!! [yg sifatnya public]
+
+
+saya rasa beberapa page masih belum 'hidup'seperti landing dan register ya? tolong sesuaikan agar sama semuanya
+
+
+
+oh iya saya rasa juga km blm handle page edit" ya? tolong dong buatkan
+
+
+untuk demo / tampilan profile [setiap username]
+
+
+oke saya setuju!! tp ada beberapa perubahan
+
+tata letak link taruh di pojok [social] dan untuk social taruh pertama
+
+untuk showcase , sebenernya lebih ke video [user] yg hitz, viral atau intinya dia ingin lampirkan, jadi tepatnya bukan showcase ? apayaa lebih kepamer inilo akun saya rameeeeeee
+
+dan untukj poto dan cover photo nya rusak tolong generate otomatis [di v1 saya rasa ada kok] intinya jika blm upload maka generate random photo profile dan untuk cover random dari beberapa template saja
+
+
+dan untuk logika / handle
+
+jika link [custom link] blm di edit/input maka pada profile public tidak perlu ditampilkan/hidden , begitu juga dengan 'showcase' jadi tolong handle ini sebaik mungkin ya!!!
+
+intinya jika ada yg blm diinput maka hidden dr public [karena v1 error karena tidak ada logika handle ini]
+
+
+jadi complete page bertujuan untuk data yg wajib diisi untuk ditampilkan!
+
+jadi secara default jika blm input link, 'showcase, social maka hidden 'tablenya'
+
+tolong dong handle semua dan tambahkan semua yg masih kurang, intinya agar bisa production 'langkah awal'
+
+
+
+tambahan
+
+Upgrade ke Creator Pro
+Dapatkan fitur showcase video dan analytics advanced!
+
+hanya tampilkan pada dashboard [basic] bukan dipublic ya
